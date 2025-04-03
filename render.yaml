@@ -8,3 +8,5 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: GOOGLE_APPLICATION_CREDENTIALS
+        value: (Paste the content of your JSON file here as a single line string if not using Render dashboard UI)

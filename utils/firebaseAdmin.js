@@ -1,8 +1,9 @@
 const admin = require("firebase-admin");
-const path = require("path");
 
-const serviceAccount = require(path.join(__dirname, "../config/serviceAccountKey.json"));
+// Parse the JSON credentials from Render's environment variable
+const serviceAccount = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
 
+// Initialize Firebase Admin
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
