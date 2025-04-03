@@ -1,13 +1,12 @@
 const admin = require("firebase-admin");
+const { initializeApp, applicationDefault, cert } = require("firebase-admin/app");
+const { getFirestore } = require("firebase-admin/firestore");
 
-// Parse the JSON credentials from Render's environment variable
-const serviceAccount = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
-
-// Initialize Firebase Admin
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+// Initialize Firebase Admin SDK
+initializeApp({
+  credential: applicationDefault(),  // This automatically reads the file path from GOOGLE_APPLICATION_CREDENTIALS
 });
 
-const db = admin.firestore();
+const db = getFirestore();
 
 module.exports = { admin, db };
